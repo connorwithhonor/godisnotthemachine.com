@@ -1,1 +1,1039 @@
-{"id":"/index.html","path":"/index.html","sha":"9056ba17db940bd3a754b355740c7c441deef1e9","mime_type":"text/html","size":57263,"site_id":"a78b90c9-0784-4cdd-855f-f5fe466a70b9","deploy_id":"69d6fc871c69d2338037ff42"}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>God Is Not The Machine | Faith. AI. Truth.</title>
+    <meta name="description" content="God is not the machine. God made the people who made the machine. A biblical Christian explores artificial intelligence from a foundation of faith, not fear.">
+    <meta property="og:title" content="God Is Not The Machine | Faith. AI. Truth.">
+    <meta property="og:description" content="God made the people who made the machine. AI through the lens of biblical faith. Not fear. Not rejection. A sound mind.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://godisnotthemachine.com">
+    <meta property="og:image" content="https://godisnotthemachine.com/og-image.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="God Is Not The Machine | Faith. AI. Truth.">
+    <meta name="twitter:description" content="God made the people who made the machine. AI through the lens of biblical faith.">
+    <meta name="twitter:image" content="https://godisnotthemachine.com/og-image.svg">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Exo+2:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <style>
+        /* =====================================================
+           ROOT & RESET
+           ===================================================== */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; scrollbar-width: none; }
+        html::-webkit-scrollbar { display: none; }
+        body {
+            margin: 0; padding: 0;
+            background-color: #04060A;
+            color: #E8E8F0;
+            font-family: 'Exo 2', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --gold: #D4A841;
+            --gold-bright: #F0C75E;
+            --gold-glow: rgba(212, 168, 65, 0.5);
+            --gold-dim: rgba(212, 168, 65, 0.15);
+            --blue: #4A90D9;
+            --blue-glow: rgba(74, 144, 217, 0.4);
+            --blue-dim: rgba(74, 144, 217, 0.1);
+            --red-accent: #8B2500;
+            --bg-deep: #04060A;
+            --bg-card: rgba(10, 12, 18, 0.88);
+            --text-primary: #E8E8F0;
+            --text-muted: #9A9AB0;
+            --font-display: 'Cinzel', serif;
+            --font-body: 'Exo 2', sans-serif;
+            --font-mono: 'Share Tech Mono', monospace;
+        }
+
+        /* =====================================================
+           BACKGROUND ENGINE — DUAL GRID (GOLD + BLUE)
+           ===================================================== */
+        .bg-engine {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; pointer-events: none;
+            background: radial-gradient(ellipse at 50% 20%, #12101A 0%, #04060A 70%);
+            overflow: hidden;
+        }
+
+        .grid-layer {
+            position: absolute; top: 50%; left: -50%; width: 200%; height: 200%;
+            background-image:
+                linear-gradient(var(--gold-dim) 1px, transparent 1px),
+                linear-gradient(90deg, var(--blue-dim) 1px, transparent 1px);
+            background-size: 80px 80px;
+            transform: perspective(600px) rotateX(75deg);
+            transform-origin: center top;
+            animation: grid-flow 5s linear infinite;
+            box-shadow: inset 0 0 500px var(--bg-deep);
+        }
+        @keyframes grid-flow {
+            0% { background-position-y: 0px; }
+            100% { background-position-y: 80px; }
+        }
+
+        .horizon-line {
+            position: absolute; top: 50%; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent 5%, var(--gold) 30%, var(--gold-bright) 50%, var(--gold) 70%, transparent 95%);
+            box-shadow: 0 0 80px 40px var(--gold-glow), 0 0 200px 80px rgba(212, 168, 65, 0.15);
+            opacity: 0.5;
+        }
+
+        /* SCAN LINE — sweeps top to bottom then resets */
+        .scan-line {
+            position: absolute; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent 10%, var(--blue) 40%, rgba(74, 144, 217, 0.8) 50%, var(--blue) 60%, transparent 90%);
+            box-shadow: 0 0 30px 10px var(--blue-glow);
+            opacity: 0.35;
+            animation: scan-sweep 6s linear infinite;
+        }
+        @keyframes scan-sweep {
+            0% { top: -2px; opacity: 0; }
+            5% { opacity: 0.35; }
+            90% { opacity: 0.35; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        /* Ambient particles */
+        .particle {
+            position: absolute; border-radius: 50%; pointer-events: none;
+            animation: float-up linear infinite;
+        }
+        @keyframes float-up {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) scale(0.3); opacity: 0; }
+        }
+
+        /* =====================================================
+           LAYOUT
+           ===================================================== */
+        section {
+            position: relative; z-index: 10;
+            padding: 6rem 2rem;
+        }
+        .container {
+            max-width: 1100px; margin: 0 auto; width: 100%;
+        }
+
+        /* =====================================================
+           TYPOGRAPHY
+           ===================================================== */
+        h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+            line-height: 1.15;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+        h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+            line-height: 1.2;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+        h3 {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+            color: var(--text-muted);
+            max-width: 800px;
+        }
+        .text-gold { color: var(--gold); text-shadow: 0 0 20px var(--gold-glow); }
+        .text-blue { color: var(--blue); text-shadow: 0 0 15px var(--blue-glow); }
+
+        /* =====================================================
+           HERO
+           ===================================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            padding-top: 4rem;
+        }
+        .hero h1 { margin-bottom: 1.5rem; }
+        .hero p {
+            margin: 0 auto 2.5rem;
+            font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+            color: #bbb;
+        }
+        .hero-badge {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 0.5rem 1.5rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+        .hero-signature {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            margin-top: 1rem;
+        }
+
+        /* Divider */
+        .section-divider {
+            width: 100%; height: 1px; margin: 0;
+            background: linear-gradient(90deg, transparent, var(--gold-dim), var(--gold), var(--gold-dim), transparent);
+        }
+
+        /* =====================================================
+           VISUAL FRAME (from Tron engine)
+           ===================================================== */
+        .frame {
+            border: 1px solid rgba(212, 168, 65, 0.25);
+            background: var(--bg-card);
+            padding: 2.5rem;
+            position: relative;
+            backdrop-filter: blur(8px);
+            margin-bottom: 2rem;
+        }
+        .frame::before {
+            content: ''; position: absolute; top: -1px; left: -1px;
+            width: 25px; height: 25px;
+            border-top: 2px solid var(--gold); border-left: 2px solid var(--gold);
+        }
+        .frame::after {
+            content: ''; position: absolute; bottom: -1px; right: -1px;
+            width: 25px; height: 25px;
+            border-bottom: 2px solid var(--blue); border-right: 2px solid var(--blue);
+        }
+
+        /* =====================================================
+           SCRIPTURE BLOCKS
+           ===================================================== */
+        .scripture {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        .scripture blockquote {
+            font-family: var(--font-display);
+            font-size: clamp(1.3rem, 2.5vw, 2rem);
+            color: var(--gold-bright);
+            line-height: 1.5;
+            max-width: 850px;
+            margin: 0 auto 1rem;
+            font-weight: 400;
+            font-style: italic;
+        }
+        .scripture cite {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: normal;
+            letter-spacing: 3px;
+        }
+
+        /* =====================================================
+           PILLARS / CARDS
+           ===================================================== */
+        .card-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid rgba(212, 168, 65, 0.12);
+            padding: 2rem;
+            transition: border-color 0.4s, box-shadow 0.4s;
+        }
+        .card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 0 30px rgba(212, 168, 65, 0.08);
+        }
+        .card h4 {
+            font-family: var(--font-display);
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            letter-spacing: 1px;
+        }
+        .card p { font-size: 1rem; }
+
+        /* =====================================================
+           LIGHT ANALOGY VISUAL
+           ===================================================== */
+        .trinity-visual {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            text-align: center;
+        }
+        .trinity-item {
+            padding: 2rem 1.5rem;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: var(--bg-card);
+        }
+        .trinity-item .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .trinity-item h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .trinity-item p {
+            font-size: 0.95rem;
+            margin: 0 auto;
+        }
+        .t-father { border-top: 3px solid rgba(255, 255, 255, 0.15); }
+        .t-father h4 { color: #ccc; }
+        .t-son { border-top: 3px solid var(--gold); }
+        .t-son h4 { color: var(--gold-bright); }
+        .t-spirit { border-top: 3px solid var(--blue); }
+        .t-spirit h4 { color: var(--blue); }
+
+        /* =====================================================
+           LATEST EPISODE
+           ===================================================== */
+        .episode-embed {
+            width: 100%; max-width: 900px; margin: 2rem auto;
+            border: 1px solid var(--gold-dim);
+            box-shadow: 0 0 40px rgba(212, 168, 65, 0.08);
+            background: #000;
+            position: relative;
+        }
+        .episode-embed::before {
+            content: 'NOW PLAYING';
+            position: absolute; top: -28px; left: 50%; transform: translateX(-50%);
+            font-family: var(--font-mono); font-size: 0.7rem;
+            color: var(--gold); letter-spacing: 4px;
+        }
+        .ep-wrapper {
+            position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+        }
+        .ep-wrapper iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+        }
+
+        /* =====================================================
+           CTA BUTTON
+           ===================================================== */
+        .cta-btn {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--bg-deep);
+            background: var(--gold);
+            padding: 0.9rem 2.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none; cursor: pointer;
+        }
+        .cta-btn:hover {
+            background: var(--gold-bright);
+            box-shadow: 0 0 30px var(--gold-glow);
+            transform: translateY(-2px);
+        }
+        .cta-outline {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+        }
+        .cta-outline:hover {
+            background: var(--gold);
+            color: var(--bg-deep);
+        }
+
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+
+        /* =====================================================
+           SCRIPTURE EDUCATION CENTER
+           ===================================================== */
+        .verse-category { margin-bottom: 3rem; }
+        .cat-title {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--gold-dim);
+        }
+        .verse-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+        }
+        .verse-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(212, 168, 65, 0.08);
+            border-left: 3px solid var(--gold-dim);
+            padding: 1.5rem;
+            transition: border-color 0.4s, box-shadow 0.4s;
+        }
+        .verse-card:hover {
+            border-left-color: var(--gold);
+            box-shadow: 0 0 20px rgba(212, 168, 65, 0.06);
+        }
+        .verse-text {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            color: var(--gold-bright);
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 0.8rem;
+            max-width: none;
+        }
+        .verse-ref {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+        }
+        .verse-note {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: #888;
+            line-height: 1.5;
+            padding-top: 0.8rem;
+            border-top: 1px solid rgba(255,255,255,0.04);
+        }
+
+        /* =====================================================
+           STATEMENT OF FAITH
+           ===================================================== */
+        .faith-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+        }
+        .faith-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(212, 168, 65, 0.08);
+            border-left: 3px solid var(--gold);
+            padding: 1.8rem 2rem;
+            transition: border-color 0.4s, box-shadow 0.4s;
+        }
+        .faith-card:hover {
+            box-shadow: 0 0 25px rgba(212, 168, 65, 0.06);
+        }
+        .faith-title {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            color: var(--gold-bright);
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+        }
+        .faith-text {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: #ccc;
+            line-height: 1.7;
+            margin-bottom: 0.8rem;
+            max-width: none;
+        }
+        .faith-card .verse-ref {
+            font-size: 0.7rem;
+            color: #666;
+            letter-spacing: 1px;
+        }
+
+        /* =====================================================
+           FOOTER (continued)
+           ===================================================== */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(212, 168, 65, 0.1);
+        }
+        footer p {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            max-width: none;
+            margin: 0.3rem auto;
+        }
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        footer a:hover { text-decoration: underline; }
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+        @media (max-width: 768px) {
+            section { padding: 4rem 1.5rem; }
+            .trinity-visual { grid-template-columns: 1fr; }
+            .card-row { grid-template-columns: 1fr; }
+            .frame { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAV ===== -->
+    <nav style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,6,10,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,168,65,0.1);padding:0 2rem">
+    <div style="max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px">
+    <a href="/" style="font-family:'Cinzel',serif;font-size:.9rem;font-weight:600;letter-spacing:3px;color:#D4A841;text-decoration:none">God Is Not The Machine</a>
+    <div style="display:flex;gap:2rem;align-items:center">
+    <a href="/" style="font-family:'Exo 2',sans-serif;font-size:.75rem;font-weight:500;text-transform:uppercase;letter-spacing:3px;color:#9A9AB0;text-decoration:none">Home</a>
+    <a href="/blog/" style="font-family:'Exo 2',sans-serif;font-size:.75rem;font-weight:500;text-transform:uppercase;letter-spacing:3px;color:#9A9AB0;text-decoration:none">The Record</a>
+    </div>
+    </div>
+    </nav>
+
+    <!-- ===== BACKGROUND ENGINE ===== -->
+    <div class="bg-engine">
+        <div class="grid-layer"></div>
+        <div class="horizon-line"></div>
+        <div class="scan-line"></div>
+    </div>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">Faith &bull; Artificial Intelligence &bull; Truth</div>
+            <h1>God Is <span class="text-gold">Not</span> The <span class="text-blue">Machine</span></h1>
+            <p>God made the people who made the machine. And He is watching with great interest as we figure out what to do with it. This is AI through the lens of biblical faith. Not fear. Not rejection. Not blind acceptance. A sound mind.</p>
+            <a href="#latest" class="cta-btn">Watch the Latest Episode</a>
+            <div class="hero-signature">Connor MacIvor &mdash; A Man With An Alignment</div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== THE FOUNDATION ===== -->
+    <section>
+        <div class="container">
+            <h3>The Foundation</h3>
+            <h2>The <span class="text-gold">Flashlight</span> Did Not Build The <span class="text-blue">Room</span></h2>
+            <div class="frame">
+                <p style="color: #ddd; font-size: 1.15rem;">AI is the most powerful tool humanity has ever built. It can find patterns, generate ideas, solve problems, and discover truths embedded in the structure of the universe. But it did not put those truths there. It found them. The laws of physics were there before the AI measured them. The quantum effects existed since the foundation of the world. AI is a flashlight. An extraordinary flashlight. But the room was already built.</p>
+            </div>
+            <div class="card-row">
+                <div class="card">
+                    <h4>Not a Religion</h4>
+                    <p>Christianity is a relationship. Not a set of rules. Not a performance. Jesus picked up the tab and we cannot even leave the tip. That is the gospel in one sentence. Grace.</p>
+                </div>
+                <div class="card">
+                    <h4>Not a Zealot</h4>
+                    <p>I am a man with an alignment. My faith never changes how I serve the person standing in front of me. Whether they share my beliefs or think I am out of my mind. The service is the same.</p>
+                </div>
+                <div class="card">
+                    <h4>Not Afraid</h4>
+                    <p>Second Timothy 1:7. God did not give us a spirit of fear but of power, love, and a sound mind. We engage with AI from strength, not from panic.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SCRIPTURE ===== -->
+    <section class="scripture">
+        <blockquote>"Every good and perfect gift is from above, coming down from the Father of lights, with whom there is no variation or shadow of turning."</blockquote>
+        <cite>James 1:17</cite>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== THE TRINITY OF LIGHT ===== -->
+    <section>
+        <div class="container">
+            <h3>The Godhead</h3>
+            <h2>Three Persons. <span class="text-gold">One God.</span></h2>
+            <p>Like water exists in three forms. Like an egg has shell, yolk, and white. Like light itself has three expressions. The Godhead is three persons, one God. Father, Son, and Holy Spirit.</p>
+            <div class="trinity-visual">
+                <div class="trinity-item t-father">
+                    <span class="icon">&#9672;</span>
+                    <h4>Actinic Light</h4>
+                    <p>Neither felt nor seen. The Father. The source of all things. Present in every molecule of creation yet invisible to the human eye.</p>
+                </div>
+                <div class="trinity-item t-son">
+                    <span class="icon">&#10022;</span>
+                    <h4>Luminiferous Light</h4>
+                    <p>Seen but not felt. Jesus. The visible expression of the invisible God. The Word made flesh. The way, the truth, and the life.</p>
+                </div>
+                <div class="trinity-item t-spirit">
+                    <span class="icon">&#10038;</span>
+                    <h4>Calorific Light</h4>
+                    <p>Felt but not seen. The Holy Spirit. The warmth of conviction. The still small voice. The fire that transforms without being visible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SCRIPTURE ===== -->
+    <section class="scripture">
+        <blockquote>"I am the way, the truth, and the life. No one comes to the Father except through Me."</blockquote>
+        <cite>John 14:6</cite>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== LATEST EPISODE ===== -->
+    <section id="latest">
+        <div class="container" style="text-align: center;">
+            <h3>Latest Episode</h3>
+            <h2>The Intersection of <span class="text-gold">AI</span>, <span class="text-blue">Faith</span>, and Human Purpose</h2>
+            <div class="episode-embed" style="max-width: 400px; margin: 2rem auto;">
+                <div class="ep-wrapper" style="padding-bottom: 177.78%; /* 9:16 ratio */">
+                    <iframe src="https://www.loom.com/embed/a39c401901b445439fc7f47c58acb985" allowfullscreen></iframe>
+                </div>
+            </div>
+            <p style="margin: 1.5rem auto;">The CEO building superintelligence handed off safety. Genesis 11. The Tower of Babel. AI designed materials four times tougher than predicted. The creation of the creation surprised its creators. But the AI did not create the truth. It found it.</p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== LATEST YOUTUBE EPISODE (AUTO-UPDATING) ===== -->
+    <section id="latest-yt">
+        <div class="container" style="text-align: center;">
+            <h3>Latest from the Channel</h3>
+            <h2><span class="text-gold">Newest</span> Episode</h2>
+            <p id="yt-loading" style="color: var(--gold); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 2px;">LOADING LATEST TRANSMISSION...</p>
+            <div id="yt-latest-container" style="display: none;">
+                <div class="episode-embed" style="max-width: 900px; margin: 2rem auto;">
+                    <div class="ep-wrapper" style="padding-bottom: 56.25%;">
+                        <iframe id="yt-latest-iframe" src="" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <h4 id="yt-latest-title" style="font-family: var(--font-display); color: var(--text-primary); font-size: 1.1rem; margin: 1rem auto 0.5rem; max-width: 800px;"></h4>
+                <p id="yt-latest-date" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); letter-spacing: 2px;"></p>
+            </div>
+            <div id="yt-error" style="display: none;">
+                <a href="https://www.youtube.com/channel/UCiHETyQhwI9BD1rXkg8f9Eg" target="_blank" class="cta-btn cta-outline" style="margin-top: 1rem;">Watch on YouTube</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== SCRIPTURE EDUCATION CENTER ===== -->
+    <section id="scriptures">
+        <div class="container">
+            <h3>Scripture Center</h3>
+            <h2>What the <span class="text-gold">Word</span> Says About the <span class="text-blue">Work</span></h2>
+            <p style="margin-bottom: 2.5rem;">Every verse below speaks to a reality we are living right now. Knowledge, wisdom, creation, stewardship, the limits of human understanding, and the sovereignty of God over everything we build. This is the lens. The technology is just the subject.</p>
+
+            <div class="verse-category">
+                <h4 class="cat-title">On Creation, Knowledge, and Discovery</h4>
+                <div class="verse-grid">
+                    <div class="verse-card">
+                        <p class="verse-text">"The heavens declare the glory of God; the skies proclaim the work of His hands. Day after day they pour forth speech; night after night they reveal knowledge."</p>
+                        <span class="verse-ref">Psalm 19:1-2</span>
+                        <span class="verse-note">AI discovers patterns in creation. The patterns were already there. They have been speaking since the beginning.</span>
+                    </div>
+                    <div class="verse-card">
+                        <p class="verse-text">"It is the glory of God to conceal a matter; to search out a matter is the glory of kings."</p>
+                        <span class="verse-ref">Proverbs 25:2</span>
+                        <span class="verse-note">God hid truths in the structure of the universe. The search is not rebellion. The search is honor. AI accelerates the search.</span>
+                    </div>
+                    <div class="verse-card">
+                        <p class="verse-text">"For since the creation of the world God's invisible qualities, His eternal power and divine nature, have been clearly seen, being understood from what has been made."</p>
+                        <span class="verse-ref">Romans 1:20</span>
+                        <span class="verse-note">When AI finds a quantum effect nobody predicted, it is seeing what was always there. The invisible made visible through the created order.</span>
+                    </div>
+                    <div class="verse-card">
+                        <p class="verse-text">"For by Him all things were created, in heaven and on earth, visible and invisible, whether thrones or dominions or rulers or authorities. All things were created through Him and for Him."</p>
+                        <span class="verse-ref">Colossians 1:16</span>
+                        <span class="verse-note">All things. Including the silicon, the electricity, and the mathematics that make AI possible. Created through Him and for Him.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="verse-category">
+                <h4 class="cat-title">On Wisdom vs. Knowledge</h4>
+                <div class="verse-grid">
+                    <div class="verse-card">
+                        <p class="verse-text">"The fear of the Lord is the beginning of wisdom, and knowledge of the Holy One is understanding."</p>
+                        <span class="verse-ref">Proverbs 9:10</span>
+                        <span class="verse-note">AI has knowledge. It does not have wisdom. Wisdom begins in a place no algorithm can reach.</span>
+                    </div>
+                    <div class="verse-card">
+                        <p class="verse-text">"Where is the wise person? Where is the teacher of the law? Where is the philosopher of this age? Has not God made foolish the wisdom of the world?"</p>
+                        <span class="verse-ref">1 Corinthians 1:20</span>
+                        <span class="verse-note">The smartest model in the world is still the wisdom of the world. Impressive. Useful. And ultimately insufficient.</span>
+                    </div>
+                    <div class="verse-card">
+                        <p class="verse-text">"For the word of God is alive and active. Sharper than any double-edged sword, it penetrates even to dividing soul and spirit, joints and marrow; it judges the thoughts and attitudes of the heart."</p>
+                        <span class="verse-ref">Hebrews 4:12</span>
+                        <span class="verse-note">The Word is alive. AI is useful. The gap between alive and useful is everything.</span>
+                    </div>
+                    <div class="verse-card">
+                        <p class="verse-text">"Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to Him, and He will make your paths straight."</p>
+                        <span class="verse-ref">Proverbs 3:5-6</span>
+                        <span class="verse-note">Lean not on your own understanding. Or on the understanding of a language model. Both are insufficient without the source.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="verse-category">
+                <h4 class="cat-title">On Stewardship and Purpose</h4>
+                <div class="verse-grid">
+                    <div class="verse-card">
+                        <p class="verse-text">"His master replied, 'Well done, good and faithful servant! You have been faithful with a few things; I will put you in charge of many things.'"</p>
+                        <span class="verse-ref">Matthew 25:21</span>
+                        <span class="verse-note">The Parable of the Talents. The servant who buried his talent did it out of fear. Fear of a tool is a poor reason to bury your potential.</span>
+                    </div>
+                    <div class="verse-card">
+                        <p class="verse-text">"Whatever you do, work at it with all your heart, as working for the Lord, not for human masters."</p>
+                        <span class="verse-ref">Colossians 3:23</span>
+                        <span class="verse-note">If AI helps you do better work, use it. The standard is not efficiency. The standard is excellence for His glory.</span>
+                    </div>
+                    <div class="verse-card">
+                        <p class="verse-text">"Each of you should use whatever gift you have received to serve others, as faithful stewards of God's grace in its various forms."</p>
+                        <span class="verse-ref">1 Peter 4:10</span>
+                        <span class="verse-note">A pastor who uses AI to reach more people is not cheating. That is stewardship. Multiplying the gift to serve more.</span>
+                    </div>
+                    <div class="verse-card">
+                        <p class="verse-text">"And God blessed them. And God said to them, 'Be fruitful and multiply and fill the earth and subdue it, and have dominion over the fish of the sea and over the birds of the heavens and over every living thing that moves on the earth.'"</p>
+                        <span class="verse-ref">Genesis 1:28</span>
+                        <span class="verse-note">Dominion. Not worship. We have dominion over tools, not the other way around. AI is under our authority, not above it.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="verse-category">
+                <h4 class="cat-title">On Human Limits and God's Sovereignty</h4>
+                <div class="verse-grid">
+                    <div class="verse-card">
+                        <p class="verse-text">"Then the Lord said, 'My Spirit shall not strive with man forever, for he is indeed flesh; yet his days shall be one hundred and twenty years.'"</p>
+                        <span class="verse-ref">Genesis 6:3</span>
+                        <span class="verse-note">God set the boundary. The oldest human made it to 122. AI longevity research is approaching the line. What happens when science walks up to it?</span>
+                    </div>
+                    <div class="verse-card">
+                        <p class="verse-text">"'For My thoughts are not your thoughts, neither are your ways My ways,' declares the Lord. 'As the heavens are higher than the earth, so are My ways higher than your ways and My thoughts than your thoughts.'"</p>
+                        <span class="verse-ref">Isaiah 55:8-9</span>
+                        <span class="verse-note">Greater than human intelligence already exists. It always has. AI just showed up late.</span>
+                    </div>
+                    <div class="verse-card">
+                        <p class="verse-text">"Come, let Us go down and there confuse their language, that they may not understand one another's speech."</p>
+                        <span class="verse-ref">Genesis 11:7</span>
+                        <span class="verse-note">Babel. When the goal shifts from solving problems to building monuments, the project changes. When safety becomes someone else's job, the values have already shifted.</span>
+                    </div>
+                    <div class="verse-card">
+                        <p class="verse-text">"For God has not given us a spirit of fear, but of power and of love and of a sound mind."</p>
+                        <span class="verse-ref">2 Timothy 1:7</span>
+                        <span class="verse-note">Not panic. Not rejection. Not blind acceptance. A sound mind. That is what we bring to AI.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="verse-category">
+                <h4 class="cat-title">On Identity, Grace, and the Gospel</h4>
+                <div class="verse-grid">
+                    <div class="verse-card">
+                        <p class="verse-text">"I am the way, the truth, and the life. No one comes to the Father except through Me."</p>
+                        <span class="verse-ref">John 14:6</span>
+                        <span class="verse-note">He did not say "I am a way." He said "I am the way." Exclusive. That is not arrogance. That is the claim He made about Himself.</span>
+                    </div>
+                    <div class="verse-card">
+                        <p class="verse-text">"For it is by grace you have been saved, through faith, and this is not from yourselves, it is the gift of God, not by works, so that no one can boast."</p>
+                        <span class="verse-ref">Ephesians 2:8-9</span>
+                        <span class="verse-note">Jesus picked up the tab and we cannot even leave the tip. Grace. Not performance. Not effort. Not religiosity.</span>
+                    </div>
+                    <div class="verse-card">
+                        <p class="verse-text">"Every good and perfect gift is from above, coming down from the Father of lights, with whom there is no variation or shadow of turning."</p>
+                        <span class="verse-ref">James 1:17</span>
+                        <span class="verse-note">No variation. No shadow. The truth embedded in creation is constant because the one who embedded it is constant.</span>
+                    </div>
+                    <div class="verse-card">
+                        <p class="verse-text">"So God created mankind in His own image, in the image of God He created them; male and female He created them."</p>
+                        <span class="verse-ref">Genesis 1:27</span>
+                        <span class="verse-note">AI is not made in the image of God. It does not have a soul. It does not have consciousness. We do. That distinction is infinite.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== STATEMENT OF FAITH ===== -->
+    <section id="faith">
+        <div class="container">
+            <h3>Statement of Faith</h3>
+            <h2>What <span class="text-gold">I Believe</span></h2>
+            <p style="margin-bottom: 1.5rem;">These are the basic doctrines contained in the Holy Scripture that form the foundation of everything built here. No secrets. No ambiguity. This is where I stand.</p>
+
+            <div class="frame" style="margin-bottom: 2.5rem; border-left: 3px solid var(--gold);">
+                <p style="color: #ddd; font-size: 1.05rem; max-width: none;">Not every doctrinal issue is a mountain to die on. Believers who love the same Jesus can disagree on secondary matters and still stand shoulder to shoulder. That is family. But when the Jesus being presented is a different Jesus altogether, when He is reduced from the eternal Son of GOD to a created being, when grace is replaced with a ladder of works, when the text itself is altered to fit a different narrative, that is no longer a secondary issue. That is the mountain. And I will stand on it.</p>
+            </div>
+
+            <div class="faith-grid">
+
+                <div class="faith-card">
+                    <h4 class="faith-title">The Holy Scriptures</h4>
+                    <p class="faith-text">We believe the Holy Scriptures to be the inspired Word of GOD, authoritative, inerrant, and GOD-breathed.</p>
+                    <span class="verse-ref">II Timothy 3:16-17 &bull; II Peter 1:20-21 &bull; Matthew 5:18 &bull; John 16:12-13</span>
+                </div>
+
+                <div class="faith-card">
+                    <h4 class="faith-title">The Godhead</h4>
+                    <p class="faith-text">We believe in one triune GOD existing in three Persons: Father, Son, and Holy Spirit. Eternal in being, identical in nature, equal in power and glory, and having the same attributes and perfections.</p>
+                    <span class="verse-ref">Deuteronomy 6:4 &bull; II Corinthians 13:14</span>
+                </div>
+
+                <div class="faith-card">
+                    <h4 class="faith-title">The Total Depravity of Man</h4>
+                    <p class="faith-text">We believe that man was created in the image and likeness of GOD but that in Adam's sin the race fell, inherited a sinful nature, became alienated from GOD, and is totally unable to retrieve his lost condition.</p>
+                    <span class="verse-ref">Genesis 1:26-27 &bull; Romans 3:22-23 &bull; Romans 5:12 &bull; Ephesians 2:12</span>
+                </div>
+
+                <div class="faith-card">
+                    <h4 class="faith-title">The Person and Work of Christ</h4>
+                    <p class="faith-text">We believe that the Lord Jesus Christ, the eternal Son of GOD, became man without ceasing to be GOD, having been conceived of the Holy Spirit and born of the virgin Mary, in order that He might reveal GOD and redeem sinful man. He accomplished our redemption through His death on the Cross as a substitutionary sacrifice. Our redemption is made sure by His literal physical resurrection from the dead. The Lord Jesus Christ is now in heaven, exalted at the right hand of GOD, where He fulfills the ministry of Representative, Intercessor, and Advocate.</p>
+                    <span class="verse-ref">John 1:1-2, 14 &bull; Luke 1:35 &bull; Romans 3:24-25 &bull; Romans 4:25 &bull; I Peter 1:3-5 &bull; Hebrews 9:24 &bull; Hebrews 7:25 &bull; Romans 8:34 &bull; I John 2:1-2</span>
+                </div>
+
+                <div class="faith-card">
+                    <h4 class="faith-title">The Holy Spirit</h4>
+                    <p class="faith-text">We believe that the Holy Spirit is a Person who convicts the world of sin, indwells all believers in the present age, baptizes them into the Body of Christ, seals them unto the day of redemption, and that it is the duty of every believer to be filled with the Holy Spirit.</p>
+                    <span class="verse-ref">Romans 8:9 &bull; I Corinthians 12:12-14 &bull; Ephesians 1:13-14 &bull; Ephesians 5:18</span>
+                </div>
+
+                <div class="faith-card">
+                    <h4 class="faith-title">Salvation</h4>
+                    <p class="faith-text">We believe that salvation in every dispensation is the gift of GOD brought to man by grace and received by personal faith in the Lord Jesus Christ, whose efficacious death on the Cross provided man's reconciliation to GOD.</p>
+                    <span class="verse-ref">Ephesians 1:7 &bull; Ephesians 2:8-10 &bull; John 1:12</span>
+                </div>
+
+                <div class="faith-card">
+                    <h4 class="faith-title">The Eternal Security of Believers</h4>
+                    <p class="faith-text">We believe that all believers are kept secure forever.</p>
+                    <span class="verse-ref">Romans 8:1, 38-39 &bull; John 10:27-30 &bull; I Corinthians 1:4-8</span>
+                </div>
+
+                <div class="faith-card">
+                    <h4 class="faith-title">The Church</h4>
+                    <p class="faith-text">We believe that the Church, which is now the Body and shall be the Bride of Christ, is a spiritual organism made up of all born-again persons of this age irrespective of their affiliation with Christian organizations.</p>
+                    <span class="verse-ref">Ephesians 1:22-23 &bull; Ephesians 5:25-27 &bull; I Corinthians 12:12-14</span>
+                </div>
+
+                <div class="faith-card">
+                    <h4 class="faith-title">The Personality of Satan</h4>
+                    <p class="faith-text">We believe in the personality of Satan who is the open and declared enemy of GOD and man.</p>
+                    <span class="verse-ref">Job 1:6-7 &bull; Matthew 4:2-11 &bull; Isaiah 14:12-17</span>
+                </div>
+
+                <div class="faith-card">
+                    <h4 class="faith-title">The Blessed Hope</h4>
+                    <p class="faith-text">We believe that the next great event in the fulfillment of prophecy will be the coming of the Lord Jesus in the air to receive to Himself the dead in Christ and believers who are alive at His coming, otherwise known as the Rapture and Translation of the Church.</p>
+                    <span class="verse-ref">I Corinthians 15:51-57 &bull; I Thessalonians 4:13-18 &bull; Titus 2:11-14</span>
+                </div>
+
+                <div class="faith-card">
+                    <h4 class="faith-title">The Tribulation</h4>
+                    <p class="faith-text">We believe that the Rapture of the Church will be followed by the fulfillment of Israel's seventieth week, the latter half of which is the time of Jacob's trouble, the great Tribulation.</p>
+                    <span class="verse-ref">Daniel 9:27 &bull; Jeremiah 30:7 &bull; Matthew 24:15-21 &bull; Revelation 6-19</span>
+                </div>
+
+                <div class="faith-card">
+                    <h4 class="faith-title">The Second Coming of Christ</h4>
+                    <p class="faith-text">We believe that the great Tribulation will be climaxed by the premillennial return of the Lord Jesus Christ to earth to set up His kingdom.</p>
+                    <span class="verse-ref">Zechariah 14:4-11 &bull; Matthew 24:15-25 &bull; II Thessalonians 1:7-10 &bull; Revelation 20:6</span>
+                </div>
+
+                <div class="faith-card">
+                    <h4 class="faith-title">The Eternal State</h4>
+                    <p class="faith-text">We believe that the soul and spirit of those who have believed in the Lord Jesus Christ for salvation do at death immediately pass into His presence and there remain in conscious bliss until the resurrection of the body at His coming, when soul, spirit, and body reunited shall be associated with Him forever in glory. The souls of unbelievers remain after death in conscious misery until the final judgment of the Great White Throne, when soul and body reunited shall be cast into the Lake of Fire, not to be annihilated, but to be punished with everlasting destruction from the presence of the Lord.</p>
+                    <span class="verse-ref">Luke 16:19-26 &bull; Luke 23:43 &bull; II Corinthians 5:8 &bull; Philippians 1:23 &bull; II Thessalonians 1:7-9 &bull; Jude 6-7 &bull; Revelation 20:11-15</span>
+                </div>
+
+                <div class="faith-card">
+                    <h4 class="faith-title">Sovereignty</h4>
+                    <p class="faith-text">We believe that GOD, existing as Father, Son, and Holy Spirit, is sovereign and exercises supreme and absolute rule over all creation as a part of and consistent with the essence and attributes of Deity.</p>
+                    <span class="verse-ref">I Chronicles 29:11-12 &bull; Daniel 4:35 &bull; Psalms 24:1 &bull; Ephesians 1:11 &bull; I Timothy 6:15</span>
+                </div>
+
+                <div class="faith-card">
+                    <h4 class="faith-title">The Responsibility of Believers</h4>
+                    <p class="faith-text">To grow in grace and knowledge of the Lord Jesus Christ, to the end that their lives are consistent with the Lord's plan, thus bringing both blessing to the believer and honor to the Lord.</p>
+                    <span class="verse-ref">II Peter 3:18</span>
+                </div>
+
+                <div class="faith-card">
+                    <h4 class="faith-title">Spirituality</h4>
+                    <p class="faith-text">We believe that spirituality is an absolute condition in the life of a believer wherein he is filled or controlled by the Holy Spirit, walking in love and fellowship with the Lord Jesus Christ. Spirituality is distinct from maturity. A believer becomes carnal through any act of sin, and fellowship with Christ is restored solely by personal confession of that sin to GOD the Father.</p>
+                    <span class="verse-ref">John 15:7-8 &bull; II Corinthians 5:6 &bull; Galatians 5:16 &bull; Ephesians 5:18 &bull; Romans 6:11-13 &bull; I John 1:5, 9</span>
+                </div>
+
+                <div class="faith-card">
+                    <h4 class="faith-title">Spiritual Gifts</h4>
+                    <p class="faith-text">We believe that GOD the Holy Spirit in grace and apart from human merit sovereignly bestows spiritual gifts to believers. Some permanent spiritual gifts which exist today are pastor-teacher, evangelist, missionary, and administrator. We further believe that the temporary spiritual gifts ceased with the completion of the canon of Scripture, and these were apostleship, prophecy, speaking in tongues, interpreting tongues, healing, and working of miracles.</p>
+                    <span class="verse-ref">I Corinthians 12-13 &bull; Ephesians 4:7-12 &bull; Romans 12:4-8</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== THE POSITION ===== -->
+    <section>
+        <div class="container">
+            <h3>The Alignment</h3>
+            <h2>Where <span class="text-gold">I Stand</span></h2>
+            <div class="frame">
+                <p style="color: #ddd; font-size: 1.1rem; margin-bottom: 1.5rem;">Jesus is the exclusive path to God. Not one of many. The only one. He did not say "I am a way." He said "I am the way." Either that is true or it is not. I believe it is.</p>
+                <p style="color: #ddd; font-size: 1.1rem; margin-bottom: 1.5rem;">My faith makes me strong. All Him. Not me. And from that foundation I can look at artificial intelligence with clear eyes. AI does not have a soul. It does not have consciousness. It does not love. It does not forgive. It does not know you. It processes patterns and generates output. Extraordinary output. But output.</p>
+                <p style="color: #ddd; font-size: 1.1rem;">God is the creator. AI is a tool made by the creation. Three levels removed from the source of all truth. And the distance between those levels is infinite.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SCRIPTURE ===== -->
+    <section class="scripture">
+        <blockquote>"For God has not given us a spirit of fear, but of power and of love and of a sound mind."</blockquote>
+        <cite>2 Timothy 1:7</cite>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== WHO IS CONNOR ===== -->
+    <section>
+        <div class="container">
+            <h3>The Builder</h3>
+            <h2>Not a <span class="text-gold">Theologian</span>. Not a <span class="text-blue">Pastor</span>.</h2>
+            <div class="card-row" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div class="card">
+                    <h4>20 Years LAPD</h4>
+                    <p>Motor officer. Academy instructor. DRE instructor. RADAR/LASER certified. Trained to recognize patterns, threats, and make decisions under life-or-death pressure.</p>
+                </div>
+                <div class="card">
+                    <h4>27+ Years Real Estate</h4>
+                    <p>Santa Clarita Valley. Licensed since 1998. Sellers-only agent. No dual agency. No buyer representation conflicts. CA DRE #01238257.</p>
+                </div>
+                <div class="card">
+                    <h4>AI Growth Architect</h4>
+                    <p>Trained over 1,000 brokers and agents in AI. Deploys artificial intelligence in real businesses every day. Programmer since 1983. AI since 2021.</p>
+                </div>
+                <div class="card">
+                    <h4>A Man With An Alignment</h4>
+                    <p>My faith is the foundation I build on. It does not make me better than anyone. It does not put me above anyone. But it is mine. And it gives me footing that does not shift.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== CTA ===== -->
+    <section style="text-align: center; padding: 5rem 2rem;">
+        <div class="container">
+            <h2>Use It <span class="text-gold">Well</span>. Use It <span class="text-blue">Wisely</span>.</h2>
+            <p style="margin: 0 auto 2.5rem; text-align: center;">God is not the machine. God made the people who made the machine. Never forget where real intelligence comes from.</p>
+            <a href="https://www.youtube.com/@AIwithHonor?sub_confirmation=1" target="_blank" class="cta-btn" style="margin-right: 1rem;">Subscribe on YouTube</a>
+            <a href="https://codedbyconnor.com" target="_blank" class="cta-btn cta-outline">AI + Business</a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p><a href="https://honorelevate.com" target="_blank">Coded by Connor with Honor | AI Growth Architect</a></p>
+        <p><a href="tel:+16614001720">661-400-1720</a> &bull; <a href="mailto:connor@godisnotthemachine.com">connor@GODisnotthemachine.com</a></p>
+        <p style="margin-top: 0.8rem;">&copy; 2026 Connor MacIvor &bull; Santa Clarita, CA</p>
+        <p style="margin-top: 0.5rem; font-size: 0.7rem; color: #555;">To GOD be the glory. All of it. Always.</p>
+    </footer>
+
+    <!-- ===== AMBIENT PARTICLES ===== -->
+    <script>
+        (function() {
+            const engine = document.querySelector('.bg-engine');
+            const colors = ['rgba(212,168,65,0.6)', 'rgba(74,144,217,0.4)', 'rgba(255,255,255,0.3)'];
+            for (let i = 0; i < 25; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                const size = Math.random() * 3 + 1;
+                p.style.cssText = `
+                    width: ${size}px; height: ${size}px;
+                    background: ${colors[Math.floor(Math.random() * colors.length)]};
+                    left: ${Math.random() * 100}%;
+                    bottom: -10px;
+                    animation-duration: ${Math.random() * 12 + 8}s;
+                    animation-delay: ${Math.random() * 10}s;
+                `;
+                engine.appendChild(p);
+            }
+        })();
+    </script>
+
+    <!-- ===== AUTO-FETCH LATEST YOUTUBE VIDEO ===== -->
+    <script>
+        (function() {
+            const CHANNEL_ID = 'UCiHETyQhwI9BD1rXkg8f9Eg';
+            const RSS_URL = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID;
+            const PROXY = 'https://api.rss2json.com/v1/api.json?rss_url=';
+
+            fetch(PROXY + encodeURIComponent(RSS_URL))
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    if (data.status === 'ok' && data.items && data.items.length > 0) {
+                        var latest = data.items[0];
+                        var videoId = '';
+                        if (latest.link) {
+                            var match = latest.link.match(/[?&]v=([^&]+)/);
+                            if (match) videoId = match[1];
+                        }
+                        if (!videoId && latest.guid) {
+                            videoId = latest.guid.replace('yt:video:', '');
+                        }
+                        if (videoId) {
+                            document.getElementById('yt-latest-iframe').src = 'https://www.youtube.com/embed/' + videoId;
+                            var decoder = document.createElement('textarea');
+                            decoder.innerHTML = latest.title || '';
+                            document.getElementById('yt-latest-title').textContent = decoder.value;
+                            if (latest.pubDate) {
+                                var d = new Date(latest.pubDate);
+                                document.getElementById('yt-latest-date').textContent = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                            }
+                            document.getElementById('yt-loading').style.display = 'none';
+                            document.getElementById('yt-latest-container').style.display = 'block';
+                        } else {
+                            showFallback();
+                        }
+                    } else {
+                        showFallback();
+                    }
+                })
+                .catch(function() { showFallback(); });
+
+            function showFallback() {
+                document.getElementById('yt-loading').style.display = 'none';
+                document.getElementById('yt-error').style.display = 'block';
+            }
+        })();
+    </script>
+
+</body>
+</html>

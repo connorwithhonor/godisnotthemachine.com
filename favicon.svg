@@ -1,1 +1,27 @@
-{"id":"/favicon.svg","path":"/favicon.svg","sha":"757a7cabb052faccdb4bf1a1e003be40e397789f","mime_type":"image/svg+xml","size":1301,"site_id":"a78b90c9-0784-4cdd-855f-f5fe466a70b9","deploy_id":"69d6fc871c69d2338037ff42"}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <rect width="180" height="180" fill="#04060A"/>
+  <!-- Main cross -->
+  <rect x="75" y="25" width="30" height="130" fill="#D4A841"/>
+  <rect x="25" y="65" width="130" height="30" fill="#D4A841"/>
+  <!-- Top-left small cross -->
+  <rect x="42" y="35" width="8" height="24" fill="#D4A841"/>
+  <rect x="34" y="43" width="24" height="8" fill="#D4A841"/>
+  <!-- Top-right small cross -->
+  <rect x="130" y="35" width="8" height="24" fill="#D4A841"/>
+  <rect x="122" y="43" width="24" height="8" fill="#D4A841"/>
+  <!-- Bottom-left small cross -->
+  <rect x="42" y="105" width="8" height="24" fill="#D4A841"/>
+  <rect x="34" y="113" width="24" height="8" fill="#D4A841"/>
+  <!-- Bottom-right small cross -->
+  <rect x="130" y="105" width="8" height="24" fill="#D4A841"/>
+  <rect x="122" y="113" width="24" height="8" fill="#D4A841"/>
+  <!-- Subtle glow effect -->
+  <rect x="75" y="25" width="30" height="130" fill="url(#glow)" opacity="0.3"/>
+  <rect x="25" y="65" width="130" height="30" fill="url(#glow)" opacity="0.3"/>
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F0C75E"/>
+      <stop offset="100%" stop-color="#D4A841" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

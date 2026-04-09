@@ -1,2 +1,0 @@
-# godisnotthemachine.com
-GodIsNotTheMachine.com
