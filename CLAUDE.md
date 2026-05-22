@@ -1,13 +1,9 @@
-# GodIsNotTheMachine.com
+# godisnotthemachine.com
 
-## Voice
-Faith + technology intersection. Provocative titles. Theological depth meets tech literacy. Not preachy — challenging. Connor's Christian faith applied to AI, ethics, humanity.
+## Deploy — git is canonical (since 2026-05-21)
+- **Netlify ID:** a78b90c9-0784-4cdd-855f-f5fe466a70b9
+- **Deploy mechanism:** auto-deploy from this repo's `main` branch via `.github/workflows/deploy.yml`. Push = deploy.
+- **Snapshot-API uploads are FORBIDDEN.** See `claude-memory/connor-own-sites-git-canonical.md`.
+- **Build config:** `netlify.toml` at repo root. HTML post-processing disabled.
 
-## Standing Orders
-- Blog posts should be thought-provoking, shareable
-- Every post gets 3-5 internal cross-links
-- Titles should be bold and clickable
-
-## Deploy
-- Netlify ID: a78b90c9-0784-4cdd-855f-f5fe466a70b9
-- Manual deploy only.
+See `claude-memory/connor-own-sites-git-canonical.md` for the full policy.
