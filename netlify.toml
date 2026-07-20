@@ -24,3 +24,13 @@
   from = "/README*"
   to = "/404.html"
   status = 404
+
+# Daily Download faith show — friendly entry that redirects to the always-fresh hub channel.
+[[redirects]]
+  from = "/daily"
+  to = "https://daily-download.pages.dev/godisnotthemachine"
+  status = 302
+[[redirects]]
+  from = "/daily-show"
+  to = "https://daily-download.pages.dev/godisnotthemachine"
+  status = 302
